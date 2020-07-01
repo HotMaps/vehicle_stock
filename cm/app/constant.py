@@ -37,6 +37,7 @@ SIGNATURE = {
 
     "category": "Demand",
     "cm_name": CM_NAME,
+    "authorized_scale":["NUTS 2"],
     "layers_needed": [
         "heat_tot_curr_density",
     ],

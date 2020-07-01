@@ -35,10 +35,8 @@ def calculation(output_directory, inputs_raster_selection):
         result['indicator'] = [{"unit": " ", "name": "Vehicle stock in year %s" %years[0], "value": int(vehicle_stock[0])},
                           {"unit": " ", "name": "Vehicle stock in year %s" %years[-1], "value": int(vehicle_stock[-1])},
                            ]
-
         if len(nuts2_codes) > 1:
             result['indicator'] = result['indicator'] + [{"unit": " ", "name": "Warning: You have selected more than one NUTS 2 region. The existing data for different years in selected regions may not be similar.", "value": str(0)}]
-
         graphics  = [{
                     "type": "bar",
                     "xLabel": "Year",
@@ -53,7 +51,6 @@ def calculation(output_directory, inputs_raster_selection):
                     }
                 }]
         result['graphics'] = graphics
-        
     else:
        result['indicator'] = [{"unit": " ", "name": "No data found for your selection", "value": 0}, ]
     return result
