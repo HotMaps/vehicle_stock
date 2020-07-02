@@ -1,9 +1,9 @@
 import os,sys
 from osgeo import gdal
-import numpy as np, pandas as pd
+import numpy as np
+import pandas as pd
 
-import geopandas as gpd
-from shapely.geometry import Point
+
 
 path2data = os.path.split(os.path.abspath(__file__))[0]
 path_nuts_code = os.path.join(path2data,"data/data_nuts_id_number.csv")
@@ -46,30 +46,3 @@ def return_nuts_codes(path_to_raster):
     nuts2_codes = list(set(nuts2_codes))
     return nuts2_codes
 
-
-def get_temperature_and_radiation(point,target_epsg=4326,init_epsg=3035):
-    os.environ['PROJ_LIB']  = os.path.join(os.path.dirname(sys.executable),"Library","share")
-    p = gpd.GeoDataFrame([[Point(point)]], geometry='geometry', crs={'init': f'epsg:{init_epsg}'}, columns=['geometry'])   
-    p = p.to_crs(epsg=target_epsg)
-    lon = float(p.geometry.x)
-    lat = float(p.geometry.y)
-    req = f"https://re.jrc.ec.europa.eu/pvgis5/tmy.php?lat={lat}&lon={lon}"
-    df = pd.read_csv(req,sep=",")
-    radiation = dict(zip(range(1,8760+1),df[" Ghor"].values.tolist()))
-    temperature = dict(zip(range(1,8760+1),df["Tair"].values.tolist())) 
-    out = dict(temperature_t=temperature,radiation_t=radiation)
-    return out
-
-
-def get_max_heat_point(path_to_raster):
-    out = raster_array(path_to_raster,return_gt=True)
-    (arr,(x0,dx,_,y0,__,dy)) = out
-    kx,ky = np.unravel_index(arr.argmax(), arr.shape)
-    x = x0 + kx*dx
-    y = y0 + ky*dy
-    return (x,y)  
-
-
-    
-
-     
