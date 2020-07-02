@@ -40,7 +40,7 @@ def calculation(output_directory, inputs_raster_selection):
         graphics  = [{
                     "type": "bar",
                     "xLabel": "Year",
-                    "yLabel": "Vehicle Stock)",
+                    "yLabel": "Vehicle Stock",
                     "data": {
                             "labels": [str(int(x)) for x in years],
                             "datasets": [{
