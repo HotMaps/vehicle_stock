@@ -38,18 +38,13 @@ SIGNATURE = {
     "category": "Demand",
     "cm_name": CM_NAME,
     "authorized_scale":["NUTS 2"],
-    "layers_needed": [
-        "heat_tot_curr_density",
-    ],
+    "layers_needed": [],
     "type_layer_needed": [
-        {"type": "heat", "description": "You can choose the layer of type 'heat'."}
-    ],
-    "vectors_needed": [
-        "heating_technologies_eu28",
-
+        {"type": "nuts_id_number", "description": "A default layer is used here."}
     ],
     "cm_url": "Do not add something",
-    "cm_description": "this computation module allows to divide the HDM",
+    "cm_description": "This calculation module interpolates the values of vehicle stock at NUTS 0 under BaU scenario into NUTS 2 level. We suggest to look into each NUTS 2 level separately, as the data are available for different time periods depending on the region and aggregating them may not lead to a meaningful result.",
     "cm_id": CM_ID,
+    "wiki_url": "https://wiki.hotmaps.hevs.ch/en/CM-Vehicle-stock-at-NUTS-2-level", 
     'inputs_calculation_module': INPUTS_CALCULATION_MODULE
 }
