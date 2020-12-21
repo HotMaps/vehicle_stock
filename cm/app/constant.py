@@ -63,7 +63,8 @@ SIGNATURE = {
         {"type": "nuts_id_number", "description": "A default layer is used here."}
     ],
     "cm_url": "Do not add something",
-    "cm_description": "This calculation module interpolates the values of vehicle stock at NUTS 0 under BaU scenario into NUTS 2 level. We suggest to look into each NUTS 2 level separately, as the data are available for different time periods depending on the region and aggregating them may not lead to a meaningful result.",
+    "cm_description": "This calculation module interpolates the values of vehicle stock at NUTS 0 under BaU scenario into NUTS 2 level. We suggest to look into each NUTS 2 level separately, as the data are available for different time periods depending on the region and aggregating them may not lead to a meaningful result.\n"
+    + "It furthermore allows the user estimate the annual electricity consumption of electric vehicles",
     "cm_id": CM_ID,
     "wiki_url": "https://wiki.hotmaps.hevs.ch/en/CM-Vehicle-stock-at-NUTS-2-level", 
     'inputs_calculation_module': INPUTS_CALCULATION_MODULE
