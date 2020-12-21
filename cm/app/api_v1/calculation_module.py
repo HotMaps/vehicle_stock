@@ -30,7 +30,7 @@ def calculation(output_directory, inputs_raster_selection, inputs_parameter_sele
     
     energy_electric_vehicles = (float(inputs_parameter_selection["kmperyear"]) / 100   #100 km
                                 * float(inputs_parameter_selection["share_vehicles"]) / 100   # % to shares
-                                * float(inputs_parameter_selection["energy_per_100km"]) / 100 )  # kWh / GWh
+                                * float(inputs_parameter_selection["energy_per_100km"]) / 10**6 )  # kWh / GWh
 
     if len(rows)>0:
         transport_data_selection = transport_data.iloc[rows, :].sort_values(by=['year'])
