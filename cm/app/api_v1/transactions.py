@@ -131,8 +131,6 @@ def compute():
     #TODO CM Developper do not need to change anything here
     # here is the inputs layers and parameters
     inputs_raster_selection = helper.validateJSON(data["inputs_raster_selection"])
-
-
     inputs_parameter_selection = helper.validateJSON(data["inputs_parameter_selection"])
 
 
@@ -144,7 +142,7 @@ def compute():
     output_directory = UPLOAD_DIRECTORY
     # call the calculation module function
     #result = calculation_module.calculation(output_directory, inputs_raster_selection,inputs_vector_selection,inputs_parameter_selection)
-    result = calculation_module.calculation(output_directory, inputs_raster_selection,inputs_parameter_selection)
+    result = calculation_module.calculation(output_directory, inputs_raster_selection, inputs_parameter_selection)
 
     response = {
         'result': result
