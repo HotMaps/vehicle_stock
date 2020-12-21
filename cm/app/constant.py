@@ -20,8 +20,38 @@ PORT = PORT_DOCKER
 #TODO ********************setup this URL depending on which version you are running***************************
 
 TRANFER_PROTOCOLE ='http://'
-INPUTS_CALCULATION_MODULE = []
 
+INPUTS_CALCULATION_MODULE = [
+
+    {'input_name': 'Distance traveled per vehicle and year',
+     'input_type': 'input',
+     'input_parameter_name': 'kmperyear',
+     'input_value': 11000,
+     'input_unit': 'km/year',
+     'input_min': 7000,
+     'input_max': 15000,
+     'cm_id': CM_ID
+     },
+    {'input_name': 'Share electric vehicle on stock (2030)',
+     'input_type': 'input',
+     'input_parameter_name': 'share_vehicles',
+     'input_value': 30,
+     'input_unit': '%',
+     'input_min': 0,
+     'input_max': 100,
+     'cm_id': CM_ID
+     },
+    {'input_name': 'Electricity consumption per 100km ',
+     'input_type': 'input',
+     'input_parameter_name': 'energy_per_100km',
+     'input_value': 17,
+     'input_unit': '%',
+     'input_min': 12,
+     'input_max': 25,
+     'cm_id': CM_ID
+     }
+    
+]
 
 SIGNATURE = {
 

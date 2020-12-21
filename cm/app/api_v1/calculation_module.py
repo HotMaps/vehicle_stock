@@ -13,7 +13,7 @@ path2data = os.path.split(os.path.abspath(__file__))[0]
 transport_data_nuts2 = os.path.join(path2data,"my_calculation_module_directory/data/transport_nuts2.csv")
 
 
-def calculation(output_directory, inputs_raster_selection):
+def calculation(output_directory, inputs_raster_selection, inputs_parameter_selection):
     path_nuts_id_tif = inputs_raster_selection["nuts_id_number"]
     nuts2_codes  = return_nuts_codes(path_nuts_id_tif)
     transport_data = pd.read_csv(transport_data_nuts2)
@@ -27,6 +27,11 @@ def calculation(output_directory, inputs_raster_selection):
     # remove the last " and "
     selected_areas = selected_areas[:-5]
     rows = np.concatenate([np.argwhere(ids == item)[:,0] for item in nuts2_codes])
+    
+    energy_electric_vehicles = (float(inputs_parameter_selection["kmperyear"]) / 100   #100 km
+                                * float(inputs_parameter_selection["share_vehicles"]) / 100   # % to shares
+                                * float(inputs_parameter_selection["energy_per_100km"]) / 100 )  # kWh / GWh
+
     if len(rows)>0:
         transport_data_selection = transport_data.iloc[rows, :].sort_values(by=['year'])
         years = np.unique(transport_data_selection.values[:, 1])
@@ -34,6 +39,7 @@ def calculation(output_directory, inputs_raster_selection):
         
         result['indicator'] = [{"unit": " ", "name": "Vehicle stock in year %s" %years[0], "value": int(vehicle_stock[0])},
                           {"unit": " ", "name": "Vehicle stock in year %s" %years[-1], "value": int(vehicle_stock[-1])},
+                          {"unit": "GWh", "name": "Electr. consumption electric vehicles in %s" %years[-1], "value": int(float(vehicle_stock[-1]) * energy_electric_vehicles)}
                            ]
         if len(nuts2_codes) > 1:
             result['indicator'] = result['indicator'] + [{"unit": " ", "name": "Warning: You have selected more than one NUTS 2 region. The existing data for different years in selected regions may not be similar.", "value": str(0)}]
