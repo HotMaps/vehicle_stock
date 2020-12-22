@@ -45,9 +45,9 @@ INPUTS_CALCULATION_MODULE = [
      'input_type': 'input',
      'input_parameter_name': 'energy_per_100km',
      'input_value': 17,
-     'input_unit': '%',
+     'input_unit': 'kWh/100km',
      'input_min': 12,
-     'input_max': 25,
+     'input_max': 23,
      'cm_id': CM_ID
      }
     
